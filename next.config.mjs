@@ -7,6 +7,9 @@
 
 /** @type {import("next").NextConfig} */
 const config = {
+  images: {
+    domains: ['raw.githubusercontent.com', `res.cloudinary.com`],
+  },
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
