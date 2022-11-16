@@ -14,11 +14,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Example {
+model Vote {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  votedFor       Movie @relation(name: "votesFor", fields: [votedForId], references: [id])
+  votedForId     Int
+  votedAgainst   Movie @relation(name: "votesAgainst", fields: [votedAgainstId], references: [id])
+  votedAgainstId Int
+  @@index([votedForId])
+  @@index([votedAgainstId])
 }
+
+model Movie {
+  id Int @id
+  name        String
+  coverUrl   String
+  VoteFor     Vote[] @relation("votesFor")
+  VoteAgainst Vote[] @relation("votesAgainst")
+}
+
 
 // Necessary for Next auth
 model Account {
