@@ -41,7 +41,21 @@ export const movieRouter = router({
        
       return response
     }),
-  
+  castVote: publicProcedure
+    .input(z.object({ movieFor: z.number(), movieAgainst: z.number() }))
+    .mutation( async ({ctx,  input }) => {
+
+      const voteInDb = await ctx.prisma.vote.create({
+        data: {
+          votedAgainstId: input.movieAgainst,
+          votedForId: input.movieFor,
+        },
+      });
+
+      
+      return { success: true, vote: voteInDb };
+    })
+
 });
 
 /*
