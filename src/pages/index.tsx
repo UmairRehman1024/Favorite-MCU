@@ -7,28 +7,26 @@ import { trpc } from "../utils/trpc";
 import {getOptionsForVote} from  "../utils/getRandomMovie"
 import { useState } from "react";
 import React from "react";
+import Router from "next/router";
+import { Movie } from "../types/Movie"
 
 
-
-type Movie =  {
-  id: number,
-  title: string,
-  cover_url: string
-
-}
 
 const Home: NextPage = () => {
+  
+  //get 2 random ids
   const [ids, updateids] = useState(() => getOptionsForVote());
-
   const[first, second] = ids
   
   //const firstMovie = trpc.useQuery(["movie.get-movie-by-id", {id: first}])
   //const secondMovie = trpc.useQuery(["movie.get-movie-by-id", {id: second}])
   
 
+  //get movies from database
   const fMovie = trpc.movie.getOne.useQuery({id: first})
   const sMovie = trpc.movie.getOne.useQuery({id : second})
 
+  //get data from fMovie/sMovie
   const firstMovie = fMovie.data
   const secondMovie = sMovie.data
 
@@ -40,13 +38,10 @@ const Home: NextPage = () => {
   }
 
   if (fMovie.isError || sMovie.isError){
-
-    
     return <h1>There was an error</h1>
-
-
   }
 
+  //to get rid of tye errors
   if (firstMovie == null|| secondMovie == null || firstMovie == undefined|| secondMovie == undefined) {
     return <div>error</div>
   }
@@ -67,16 +62,14 @@ const Home: NextPage = () => {
         movieAgainst: firstMovie.id,
       });
     }
+    Router.reload();
   }
 
   
   
 
   
-  return (<>
-    <div className="bg-blue-200 navbar">
-        <a className="btn btn-ghost normal-case text-xl">Favourite MCU Movie</a>
-    </div>
+  return (
     <div  className="bg-gray-100 flex flex-col gap-2 w-screen min-h-screen justify-center items-center sm:flex-row ">
       
       <Card id={firstMovie.id} name={firstMovie?.name} cover_url={firstMovie?.coverUrl} vote={() => Vote(firstMovie.id)}></Card>
@@ -89,7 +82,7 @@ const Home: NextPage = () => {
       
     
     </div>
-  </>
+  
   );
 };
 
