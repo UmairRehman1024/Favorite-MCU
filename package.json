@@ -19,8 +19,10 @@
     "@trpc/server": "10.0.0-rc.0",
     "next": "13.0.0",
     "next-auth": "^4.15.0",
+    "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.6.0",
     "superjson": "1.9.1",
     "zod": "^3.18.0"
   },
