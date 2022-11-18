@@ -47,6 +47,25 @@ export const movieRouter = router({
 
       
       return { success: true, vote: voteInDb };
-    })
+    }),
+    getMoviesInOrder: publicProcedure
+      .query(async ({ ctx }) => {
+        return await ctx.prisma.movie.findMany({
+          orderBy: {
+            VoteFor: { _count: "desc" },
+          },
+          select: {
+            id: true,
+            name: true,
+            coverUrl: false,
+            _count: {
+              select: {
+                VoteFor: true,
+                VoteAgainst: true,
+              },
+            },
+          },
+        });
+      })
 
 });
