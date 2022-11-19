@@ -13,7 +13,9 @@ const Navbar = ()  => {
     <nav className="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
      <div className="container flex flex-wrap items-center justify-between mx-auto">
       <Link href="/" className="flex items-center">
-        <Image src="https://ik.imagekit.io/9m4vpfigvq/MCU_Logo.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1668706707989" className="h-6 mr-3 sm:h-9" alt="MCU Logo"></Image>
+        <div className="relative h-6 w-24 mr-3 sm:h-9">
+          <Image src="https://ik.imagekit.io/9m4vpfigvq/MCU_Logo.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1668706707989"  alt="MCU Logo" fill ></Image>
+        </div>
         <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Favourite Mcu Movie</span>
       </Link>
       <div className="flex md:order-2">

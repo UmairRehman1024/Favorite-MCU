@@ -9,7 +9,7 @@ import { useState } from "react";
 import React from "react";
 import Router from "next/router";
 import { Movie } from "../types/Movie"
-
+import {doBackfill} from "../../scripts/fill-db"
 
 
 const Home: NextPage = () => {
@@ -65,7 +65,7 @@ const Home: NextPage = () => {
     Router.reload();
   }
 
-  
+
   
 
   
