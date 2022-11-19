@@ -46,6 +46,7 @@ const Navbar = ()  => {
 
 
 //HeadlessUI
+/*
 function Dropdown() {
   return (
     <Menu>
@@ -53,28 +54,29 @@ function Dropdown() {
       <Menu.Items>
         <Menu.Item>
           {({ active }) => (
-            <a
+            <Link
               className={`${active && 'bg-blue-500'}`}
               href="/"
             >
               Home
-            </a>
+            </Link>
           )}
         </Menu.Item>
         <Menu.Item>
           {({ active }) => (
-            <a
+            <Link
               className={`${active && 'bg-blue-500'}`}
               href="/results"
             >
               Results
-            </a>
+            </Link>
           )}
         </Menu.Item>
       </Menu.Items>
     </Menu>
   )
 }
+*/
 
 const DarkModeToggle = () => {
     const {theme, setTheme} = useTheme()
