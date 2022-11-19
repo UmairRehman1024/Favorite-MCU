@@ -1,5 +1,5 @@
 import { trpc } from "../utils/trpc";
-import {moviesInOrderReturn} from "../types/Movie"
+import type {moviesInOrderReturn} from "../types/Movie"
 import Head from "next/head";
 
 const ResultsPage = () => {
