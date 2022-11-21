@@ -70,7 +70,7 @@ const Home: NextPage = () => {
 
   
   return (
-    <div  className=" flex flex-col gap-2 w-screen min-h-screen justify-center items-center sm:flex-row dark:bg ">
+    <div  className=" flex flex-col gap-2 w-screen min-h-screen justify-center items-center sm:flex-row dark:bg-gray-800 ">
       
       <Card id={firstMovie.id} name={firstMovie?.name} cover_url={firstMovie?.coverUrl} vote={() => Vote(firstMovie.id)}></Card>
 
