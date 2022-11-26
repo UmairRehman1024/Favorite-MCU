@@ -4,7 +4,6 @@ import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from 'next-themes'
 
 
-import Navbar from "../components/navbar";
 
 import { trpc } from "../utils/trpc";
 
@@ -18,7 +17,6 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <ThemeProvider attribute="class">
-        <Navbar></Navbar>
         <Component {...pageProps} />
       </ThemeProvider>
     </SessionProvider>

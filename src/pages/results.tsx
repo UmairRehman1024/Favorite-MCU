@@ -1,6 +1,8 @@
 import { trpc } from "../utils/trpc";
 import type {moviesInOrderReturn} from "../types/Movie"
 import Head from "next/head";
+import Navbar from "../components/navbar";
+
 
 const ResultsPage = () => {
     const moviesInOrder = trpc.movie.getMoviesInOrder.useQuery()
@@ -23,6 +25,8 @@ const ResultsPage = () => {
       
       
     return (
+      <>
+        <Navbar></Navbar>
         <div className="flex flex-col items-center pt-20">
           <Head>
             <title>Favourite MCU Movie Results</title>
@@ -45,6 +49,7 @@ const ResultsPage = () => {
               })}
           </div>
         </div>
+      </>
       );
 
 }
