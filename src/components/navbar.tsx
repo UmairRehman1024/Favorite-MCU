@@ -1,5 +1,8 @@
 import {useTheme} from 'next-themes'
 import { IoSunnyOutline, IoMoonOutline } from 'react-icons/io5';
+import { AiOutlineClose } from "react-icons/ai"
+import {GiHamburgerMenu} from "react-icons/gi"
+
 
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment, useEffect, useRef, useState } from 'react'
@@ -52,33 +55,40 @@ const Navbar = ()  => {
 
 //HeadlessUI
 
+//className="z-10 font-normal bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+
 function Dropdown() {
   return (
     <Menu >
       <Menu.Button className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" >
-        <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
+        <GiHamburgerMenu size={"1.5rem"}></GiHamburgerMenu>
       </Menu.Button>
-      <Menu.Items className="z-10 font-normal bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-        <Menu.Item>
-          {({ active }) => (
-            <Link
-              className={`${active && 'bg-blue-500'} block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white`}
-              href="/"
-            >
-              Home
-            </Link>
-          )}
-        </Menu.Item>
-        <Menu.Item>
-          {({ active }) => (
-            <Link
-              className={`${active && 'bg-blue-500'} block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white`}
-              href="/results"
-            >
-              Results
-            </Link>
-          )}
-        </Menu.Item>
+      <Menu.Items className='fixed top-0 bottom-0 right-0 p-2 w-[300px] overflow-y-auto text-center bg-slate-100 dark:bg-slate-600'>
+        <Menu.Button className={"flex"}>
+          <AiOutlineClose size={"2rem"}></AiOutlineClose>
+        </Menu.Button>
+        <div className='flex flex-col justify-center h-3/4 '>
+          <Menu.Item>
+            {({ active }) => (
+              <Link
+                className={`${active && 'bg-blue-500'} text-3xl block px-4 py-2 hover:bg-gray-300  dark:hover:text-gray-600`}
+                href="/"
+              >
+                Home
+              </Link>
+            )}
+          </Menu.Item>
+          <Menu.Item>
+            {({ active }) => (
+              <Link
+              className={`${active && 'bg-blue-500'} text-3xl block px-4 py-2 hover:bg-gray-300  dark:hover:text-gray-600`}
+                href="/results"
+              >
+                Results
+              </Link>
+            )}
+          </Menu.Item>
+        </div>
       </Menu.Items>
     </Menu>
   )
