@@ -70,19 +70,13 @@ const Home: NextPage = () => {
 
   
   return (
-    <div  className=" flex flex-col gap-2 w-screen min-h-screen justify-center items-center sm:flex-row dark:bg-gray-800 ">
-      
-      <Card id={firstMovie.id} name={firstMovie?.name} cover_url={firstMovie?.coverUrl} vote={() => Vote(firstMovie.id)}></Card>
-
-
-      <div className="font-sans font-bold">OR</div>
-
-      <Card id={secondMovie.id} name={secondMovie?.name} cover_url={secondMovie?.coverUrl} vote={() => Vote(firstMovie.id)}></Card>
-    
-      
-    
+    <div  className="dark:bg-gray-800 min-h-screen  flex flex-col justify-center">
+      <div className="pt-20 sm:p-0 flex flex-col gap-2 justify-center items-center sm:flex-row w-11/12 mx-auto h-full">
+        <Card id={firstMovie.id} name={firstMovie?.name} cover_url={firstMovie?.coverUrl} vote={() => Vote(firstMovie.id)}></Card>
+        <div className="font-sans font-bold">OR</div>
+        <Card id={secondMovie.id} name={secondMovie?.name} cover_url={secondMovie?.coverUrl} vote={() => Vote(firstMovie.id)}></Card>
+      </div>
     </div>
-  
   );
 };
 

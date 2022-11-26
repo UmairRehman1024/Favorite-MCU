@@ -23,7 +23,7 @@ const ResultsPage = () => {
       
       
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center pt-20">
           <Head>
             <title>Favourite MCU Movie Results</title>
           </Head>
