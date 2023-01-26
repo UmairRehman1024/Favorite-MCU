@@ -35,17 +35,33 @@ const Home: NextPage = () => {
   const voteMutation = trpc.movie.castVote.useMutation()
   
 
-  
+  /*
 
   if (fMovie.isError || sMovie.isError){
     return <h1>There was an error</h1>
   }
 
-  //to get rid of tye errors
-  if (firstMovie == null|| secondMovie == null || firstMovie == undefined|| secondMovie == undefined) {
-    return <div>error</div>
+  if (fMovie.isLoading || sMovie.isLoading){
+    return (
+      <div  className="dark:bg-gray-800 h-screen w-screen  flex justify-center align-middle">
+        <img src="/rings.svg" className="w-48" />
+      </div>
+
+    )
   }
 
+*/
+  //to get rid of type errors
+  /*
+  if (firstMovie == null|| secondMovie == null || firstMovie == undefined|| secondMovie == undefined) {
+    return (
+      <div  className="dark:bg-gray-800 h-screen w-screen  flex justify-center align-middle">
+        <img src="/rings.svg" className="w-48" />
+      </div>
+
+    )
+  }
+*/
   const Vote = (selected: number) => {
     if (firstMovie == null|| secondMovie == null || firstMovie == undefined|| secondMovie == undefined) return
 
@@ -73,7 +89,7 @@ const Home: NextPage = () => {
       <Navbar></Navbar>
       <div  className="dark:bg-gray-800 min-h-screen  flex flex-col justify-center">
         <div className="pt-20 sm:p-0 flex flex-col gap-2 justify-center items-center sm:flex-row w-11/12 mx-auto h-full">
-          {fMovie && sMovie && (
+          {firstMovie && secondMovie && (
             <>
               <Card id={firstMovie.id} name={firstMovie?.name} cover_url={firstMovie?.coverUrl} vote={() => Vote(firstMovie.id)}></Card>
               <div className="font-sans font-bold">OR</div>
