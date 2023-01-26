@@ -1,6 +1,7 @@
 # Favourite MCU movie/tvshow
-Find the project hosted on vercel [here](https://fav-marvel.vercel.app/)
 This project is used to find the our favourite MCU movie/tv show
+
+Find the project hosted on vercel [here](https://fav-marvel.vercel.app/)
 
 This project uses the [T3 stack](https://create.t3.gg/)
 
