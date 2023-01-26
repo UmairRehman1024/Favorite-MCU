@@ -35,11 +35,9 @@ const Home: NextPage = () => {
   const voteMutation = trpc.movie.castVote.useMutation()
   
 
-  /*
+  
 
-  if (fMovie.isError || sMovie.isError){
-    return <h1>There was an error</h1>
-  }
+  
 
   if (fMovie.isLoading || sMovie.isLoading){
     return (
@@ -50,9 +48,12 @@ const Home: NextPage = () => {
     )
   }
 
-*/
+  if (fMovie.isError || sMovie.isError){
+    return <h1>There was an error</h1>
+  }
+
   //to get rid of type errors
-  /*
+  
   if (firstMovie == null|| secondMovie == null || firstMovie == undefined|| secondMovie == undefined) {
     return (
       <div  className="dark:bg-gray-800 h-screen w-screen  flex justify-center align-middle">
@@ -61,12 +62,12 @@ const Home: NextPage = () => {
 
     )
   }
-*/
+
   const Vote = (selected: number) => {
     if (firstMovie == null|| secondMovie == null || firstMovie == undefined|| secondMovie == undefined) return
 
     if (selected === firstMovie.id) {
-      // If voted for 1st pokemon, fire voteFor with first ID
+      // If voted for 1st Movie, fire voteFor with first ID
       voteMutation.mutate({
         movieFor: firstMovie.id,
         movieAgainst: secondMovie.id,
@@ -89,6 +90,19 @@ const Home: NextPage = () => {
       <Navbar></Navbar>
       <div  className="dark:bg-gray-800 min-h-screen  flex flex-col justify-center">
         <div className="pt-20 sm:p-0 flex flex-col gap-2 justify-center items-center sm:flex-row w-11/12 mx-auto h-full">
+          <Card id={firstMovie.id} name={firstMovie?.name} cover_url={firstMovie?.coverUrl} vote={() => Vote(firstMovie.id)}></Card>
+          <div className="font-sans font-bold">OR</div>
+          <Card id={secondMovie.id} name={secondMovie?.name} cover_url={secondMovie?.coverUrl} vote={() => Vote(firstMovie.id)}></Card>
+        </div>
+      </div>
+  </>
+  );
+};
+
+/*  return (<>
+      <Navbar></Navbar>
+      <div  className="dark:bg-gray-800 min-h-screen  flex flex-col justify-center">
+        <div className="pt-20 sm:p-0 flex flex-col gap-2 justify-center items-center sm:flex-row w-11/12 mx-auto h-full">
           {firstMovie && secondMovie && (
             <>
               <Card id={firstMovie.id} name={firstMovie?.name} cover_url={firstMovie?.coverUrl} vote={() => Vote(firstMovie.id)}></Card>
@@ -96,17 +110,22 @@ const Home: NextPage = () => {
               <Card id={secondMovie.id} name={secondMovie?.name} cover_url={secondMovie?.coverUrl} vote={() => Vote(firstMovie.id)}></Card>
             </>
           )}
-          {!fMovie && !sMovie && <img src="/rings.svg" className="w-48" />}
+          {!fMovie && !sMovie && (//
+            <div className="flex justify-center align-middle w-screen h-screen">
+              <img src="/rings.svg" className="w-48" />
+           </div>
+          )}
 
         </div>
       </div>
-  
-  
-  
   </>
-    
   );
-};
+}; */
+
+
+
+
+
 
 /*
       <Card Movie={firstMovie}  vote={() => Vote(firstMovie.id)}> </Card>
@@ -127,7 +146,7 @@ const Card: React.FC<{
 
 
   return(
-    <div className="card min-h-566px bg-base-100 shadow-xl cursor-pointer " onClick={() => props.vote()}>
+    <div className="transition-opacity card min-h-566px bg-base-100 shadow-xl cursor-pointer " onClick={() => props.vote()}>
       <figure><Image alt={props.name}  width={382} height={566}  src={props.cover_url}></Image></figure>
       {/* <div className="card-body">
         <h2 className="card-title justify-center ">{Movie.title}</h2>

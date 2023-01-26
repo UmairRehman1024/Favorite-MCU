@@ -8,11 +8,15 @@ const ResultsPage = () => {
     const moviesInOrder = trpc.movie.getMoviesInOrder.useQuery()
 
     if (moviesInOrder.isLoading){
-        return <h1>Loading...</h1>
+        return (
+          <div className="flex justify-center align-middle w-screen h-screen">
+            <img src="/rings.svg" className="w-48" />
+          </div>
+        )
     }
     
     if (moviesInOrder.isError){
-        return <h1>There was an error</h1>
+        return <h1 className="text-4xl">Error</h1>
     }
     
     //to get rid of type errors
