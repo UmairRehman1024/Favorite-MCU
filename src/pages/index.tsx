@@ -15,6 +15,8 @@ import Navbar from "../components/navbar";
 
 
 const Home: NextPage = () => {
+
+  // doBackfill()
   
   //get 2 random ids
   const [ids, updateids] = useState(() => getOptionsForVote());
