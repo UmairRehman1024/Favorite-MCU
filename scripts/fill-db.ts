@@ -1,14 +1,10 @@
-
-
 import { prisma } from "../src/server/db/client";
-import movies from "../mcu-movies.js"
+import movies from "../mcu-movies.js";
 
 export const doBackfill = async () => {
+  const NUMBER_OF_MOVIES = 41;
 
-    const NUMBER_OF_MOVIES = 39;
-
-
-/*
+  /*
   const fill_db = movies["mcu-movies"]."mcu-movies".map((p, index) => ({
     id: index + 1,
     name: (p as { name: string }).name,
@@ -22,20 +18,20 @@ export const doBackfill = async () => {
   }
   */
 
-  movies["mcu-movies"].map( async (movie, index,) => {
+  movies["mcu-movies"].map(async (movie, index) => {
     const id = movie.id;
     const name = movie.name;
     const coverUrl = movie.cover_url;
 
     const creation = await prisma.movie.create({
-        data: {
-            id,
-            name,
-            coverUrl
-        }
-      });
-    console.log(`added ${id}: ${name}`)
-  })
+      data: {
+        id,
+        name,
+        coverUrl,
+      },
+    });
+    console.log(`added ${id}: ${name}`);
+  });
   /*
 
   Object.entries(movies).forEach((movie) => {
